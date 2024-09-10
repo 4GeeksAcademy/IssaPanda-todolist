@@ -12,6 +12,10 @@ function Home() {
             setInput('');
         }
     };
+
+	const handleDelete = (indexToDelete) => {
+        setChores(chores.filter((_, index) => index !== indexToDelete));
+    };
 	
 
 	return (
@@ -22,7 +26,10 @@ function Home() {
 				onKeyDown={handleKeyDown} />
 			<ul>
 				{chores.map((chore, index) => (
-					<li key={index}>{chore}</li>
+					<li key={index}>
+						{chore}
+						<button onClick={() => handleDelete(index)}>X</button>
+						</li>
 				))}
 			</ul>
 		</div>
